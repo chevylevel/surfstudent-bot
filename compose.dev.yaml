@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      target: development
+      args:
+        - NODE_ENV=development
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/dist
+      - ./secrets/gcp-key.json:/app/secrets/gcp-key.json:ro
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/secrets/gcp-key.json
+    command: ["npm", "run", "dev"]
+volumes:
+  node_modules:
+  dist:
