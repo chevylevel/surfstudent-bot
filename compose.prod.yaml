@@ -1,5 +1,6 @@
 services:
   app:
+    image: surfstudent-bot_prod
     build:
       context: .
       target: production

@@ -16,7 +16,10 @@ services:
     environment:
       - NODE_ENV=development
       - GOOGLE_APPLICATION_CREDENTIALS=/app/secrets/gcp-key.json
+    env_file:
+      - .env
     command: ["npm", "run", "dev"]
 volumes:
   node_modules:
   dist:
+  
