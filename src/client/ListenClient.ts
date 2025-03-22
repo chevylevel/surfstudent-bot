@@ -41,6 +41,9 @@ export class ListenClient extends BaseClient {
         const messageLink = `https://t.me/c/${channelId}/${message.id}`;
 
         try {
+
+            console.log('message:', message.text);
+            
             if (!regexTestMessage(message.text)) return;
             
             const aiApproved = await aiTestMessage(message.text);

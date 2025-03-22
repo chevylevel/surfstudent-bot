@@ -3,6 +3,9 @@ export function regexTestMessage(phrase) {
         new RegExp(pattern, 'i').test(phrase)
     );
 
+    console.log('matches:', matches);
+    
+
     return matches;
 }
 
