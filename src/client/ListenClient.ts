@@ -45,7 +45,7 @@ export class ListenClient extends BaseClient {
             const aiApproved = await aiTestMessage(message.text);
 
             aiApproved && await this.client.sendMessage(process.env.BOT_USERNAME!, {
-                message: `${message?.text} \n ${messageLink}`,
+                message: `${message?.text} \n\n ${messageLink}`,
             });
 
         } catch (error) {
