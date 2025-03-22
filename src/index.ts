@@ -9,15 +9,6 @@ import { ListenClient } from './client/ListenClient';
 
 dotenv.config();
 
-export const API_ID = Number(process.env.API_ID);
-export const API_HASH = process.env.API_HASH!;
-export const BOT_USERNAME = process.env.BOT_USERNAME;
-export const BOT_TOKEN = process.env.BOT_TOKEN!;
-export const BUCKET_NAME = process.env.BUCKET_NAME;
-export const SERVICE_PHONE = process.env.SERVICE_PHONE;
-export const DOMAIN = process.env.DOMAIN!;
-export const PORT = process.env.PORT || 3000;
-
 async function main() {
     const storage = new GCDataStorage();
     if (!storage) return;

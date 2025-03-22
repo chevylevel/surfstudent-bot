@@ -1,4 +1,3 @@
-import { API_HASH, API_ID } from '../index';
 import { AuthenticateParams, RequestCodeParams } from "../types";
 import { GCDataStorage } from "../GCDataStorage";
 import { BaseClient } from "./BaseClient";
@@ -41,8 +40,8 @@ export class AuthService {
         try {
             const result = await client?.sendCode(
                 {
-                    apiHash: API_HASH!,
-                    apiId: API_ID,
+                    apiHash: process.env.API_HASH!,
+                    apiId: parseInt(process.env.API_ID!),
                 },
                 phoneNumber,
             );

@@ -6,10 +6,10 @@ import {
     InputMode, 
     MyContext, 
 } from "../types";
+
 import { AuthService } from "../client/AuthService";
 import { GCDataStorage } from "../GCDataStorage";
 import { BotAuth } from "./BotAuth";
-import { BOT_TOKEN } from "..";
 
 const contextSession = session({
     defaultSession: () => ({
@@ -27,7 +27,7 @@ export class Bot {
         storage: GCDataStorage,
         authService: AuthService,
     ) {
-        this.bot = new Telegraf<MyContext>(BOT_TOKEN);
+        this.bot = new Telegraf<MyContext>(process.env.BOT_TOKEN!);
         this.storage = storage;
         this.authService = authService;
 

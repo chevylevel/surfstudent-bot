@@ -1,5 +1,7 @@
-import { Bucket, Storage } from '@google-cloud/storage';
-import { BUCKET_NAME } from '.';
+import { 
+    Bucket, 
+    Storage 
+} from '@google-cloud/storage';
 
 export class GCDataStorage {
     storage: Storage;
@@ -7,7 +9,7 @@ export class GCDataStorage {
 
     constructor() {
         this.storage = new Storage();
-        this.bucket = this.storage.bucket(BUCKET_NAME!);
+        this.bucket = this.storage.bucket(process.env.BUCKET_NAME!);
     }
 
     async savePreference(userId: string, payload: Record<string, string>) {
