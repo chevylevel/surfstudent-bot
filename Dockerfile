@@ -4,6 +4,10 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
+FROM base AS development
+WORKDIR /app
+COPY . .
+
 FROM base AS build
 WORKDIR /app
 COPY . .

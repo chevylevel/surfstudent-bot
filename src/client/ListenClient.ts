@@ -18,14 +18,13 @@ export class ListenClient extends BaseClient {
                     if (event.isPrivate) return false;
 
                     if (
-                        event.message.senderId &&
-                        event.message.senderId instanceof Api.PeerUser &&
                         event.message.sender &&
                         event.message.sender instanceof Api.User &&
                         !event.message.sender.bot
                     ) {
                         return true;
                     }
+                    
                     return false;
                 },
             })

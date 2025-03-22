@@ -40,7 +40,7 @@ export class ServerApp {
     }
 
     setWebhook = async () => {
-        const webhookUrl = `${process.env.CLOUD_RUN_URL}/webhook`;
+        const webhookUrl = `${process.env.BOT_URL}/webhook`;
         const webhookSetUrl = `https://api.telegram.org/bot${process.env.BOT_TOKEN!}/setWebhook?url=${webhookUrl}`;
 
         try {
