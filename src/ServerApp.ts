@@ -3,10 +3,6 @@ import bodyParser from 'body-parser';
 import { Telegraf } from 'telegraf';
 
 import { MyContext } from './types';
-import {
-    DOMAIN,
-    PORT,
-} from '.';
 
 export class ServerApp {
     private app: Application;
@@ -37,14 +33,14 @@ export class ServerApp {
     }
 
     async start() {
-        this.app.listen(PORT, async () => {
-            console.log(`Server is running on port ${PORT}`);
+        this.app.listen(process.env.PORT, async () => {
+            console.log(`Server is running on port ${process.env.PORT}`);
             await this.setWebhook();
         });
     }
 
     setWebhook = async () => {
-        const webhookUrl = `${DOMAIN}/webhook`;
+        const webhookUrl = `${process.env.CLOUD_RUN_URL}/webhook`;
         const webhookSetUrl = `https://api.telegram.org/bot${process.env.BOT_TOKEN!}/setWebhook?url=${webhookUrl}`;
 
         try {

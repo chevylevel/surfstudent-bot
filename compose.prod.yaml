@@ -9,18 +9,4 @@ services:
     working_dir: /app
     environment:
       - NODE_ENV=production
-    ports:
-      - "3000:3000"
     command: ["npm", "run", "start"]
-
-  gcr-push:
-    image: google/cloud-sdk:latest
-    depends_on:
-      - app
-    volumes:
-      - ~/.config/gcloud:/root/.config/gcloud  # Use local gcloud credentials
-    command: >
-      bash -c "gcloud auth configure-docker &&
-               docker push gcr.io/my-project-id/my-app:latest"
-
-               gen-lang-client-0789806365
