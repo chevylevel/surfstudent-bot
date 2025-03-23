@@ -79,7 +79,7 @@ export class BotAuth {
         const isValidPhoneCode = new RegExp('^\\d \\d \\d \\d \\d$').test(message.text);
 
         if (!isValidPhoneCode) {
-            ctx.reply("❌ Invalid code format. Try again \n❗️❗️❗️ make sure you've add spaces between digits❗️❗️❗️");
+            ctx.reply("❌ Invalid code format. Try again \n❗️❗️❗️ Make sure you've added spaces between the digits ❗️❗️❗️");
 
             return;
         }
