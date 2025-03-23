@@ -37,6 +37,8 @@ export class AuthService {
         }: RequestCodeParams) {
         const client = await this.getClient(userId);
 
+        console.log("Sending code to:", phoneNumber);
+        
         try {
             const result = await client?.sendCode(
                 {
@@ -46,6 +48,7 @@ export class AuthService {
                 phoneNumber,
             );
 
+            console.log('result:', result);
             return result?.phoneCodeHash;
         } catch (error) {
             console.error('RequestCode code error:', error);
