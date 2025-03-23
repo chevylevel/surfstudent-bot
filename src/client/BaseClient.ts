@@ -8,8 +8,6 @@ export class BaseClient {
     constructor(session?: string) {
         this.session = new StringSession(session || '');
 
-        this.session.setDC(2, '149.154.167.50', 443);
-
         this.client = new TelegramClient(
             this.session,
             parseInt(process.env.API_ID!),

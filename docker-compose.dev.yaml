@@ -20,6 +20,7 @@ services:
     env_file:
       - .env
     command: ["npm", "run", "dev"]
+    network_mode: "host"
 volumes:
   node_modules:
   dist:
