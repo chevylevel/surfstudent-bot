@@ -39,9 +39,7 @@ export class BotAuth {
             }
     
             if (ctx.session.inputMode === InputMode.WAITING_CODE) {
-                await this.inputCode(ctx);
-                await this.onLoginSuccess(ctx)
-    
+                await this.inputCode(ctx);    
                 return;
             }
         }
@@ -68,7 +66,7 @@ export class BotAuth {
         ctx.session.phone = ctx.message.text;
         ctx.session.inputMode = InputMode.WAITING_CODE;
         ctx.session.phoneCodeHash = phoneCodeHash;
-        ctx.reply("🔢 Send code in format: X X X X X: add spaces between symbols");
+        ctx.reply("🔢 Send code in format: X X X X X: ❗️add spaces between symbols❗️");
     }
 
     async inputCode(ctx: MyContext) {
@@ -81,7 +79,7 @@ export class BotAuth {
         const isValidPhoneCode = new RegExp('^\\d \\d \\d \\d \\d$').test(message.text);
 
         if (!isValidPhoneCode) {
-            ctx.reply("❌ Invalid code format. Try again");
+            ctx.reply("❌ Invalid code format. Try again \n❗️❗️❗️ make sure you've add spaces between digits❗️❗️❗️");
 
             return;
         }
@@ -98,6 +96,8 @@ export class BotAuth {
                     onError: () => ctx.reply('❌ Login failed. Try again.'),
                 },
             );
+
+            await this.onLoginSuccess(ctx);
         } catch (error) {
             console.error(`SignIn error: ${error}`);
         }
