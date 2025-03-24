@@ -13,14 +13,13 @@ services:
       - dist:/app/dist
       - ./secrets/gcp-key.json:/app/secrets/gcp-key.json:ro
     ports:
-      - 3000:3000
+      - "3000:3000"
     environment:
       - NODE_ENV=development
       - GOOGLE_APPLICATION_CREDENTIALS=/app/secrets/gcp-key.json
     env_file:
       - .env
     command: ["npm", "run", "dev"]
-    network_mode: "host"
 volumes:
   node_modules:
   dist:

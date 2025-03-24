@@ -11,7 +11,7 @@ export class BotAuth {
 
     constructor(bot: Telegraf<MyContext>, authService: AuthService) {
         this.bot = bot;
-        this.authService = authService;
+        this.authService = authService;   
     }
 
     init() {
