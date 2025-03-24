@@ -1,6 +1,5 @@
 import { StringSession } from "telegram/sessions";
 import { TelegramClient } from 'telegram';
-import { LogLevel } from "telegram/extensions/Logger";
 
 export class BaseClient {
     client: TelegramClient;
@@ -15,8 +14,6 @@ export class BaseClient {
             process.env.API_HASH!,
             { connectionRetries: 5 }
         );
-
-        this.client.setLogLevel(LogLevel.DEBUG);
     }
 
     async connect() {

@@ -42,12 +42,6 @@ export class ListenClient extends BaseClient {
             if (!regexTestMessage(message.text)) return;
             
             const aiApproved = await aiTestMessage(message.text);
-
-            console.log('aiApproved:', aiApproved);
-
-            if (aiApproved) {
-                console.log('message:', message.text);   
-            }
             
             aiApproved && await this.client.sendMessage(process.env.BOT_USERNAME!, {
                 message: `${message?.text} \n\n ${messageLink}`,

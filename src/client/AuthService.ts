@@ -48,7 +48,7 @@ export class AuthService {
                 phoneNumber,
             );
 
-            console.log('result:', result);
+            console.log('sendCode result:', result);
             return result?.phoneCodeHash;
         } catch (error) {
             console.error('RequestCode code error:', error);
