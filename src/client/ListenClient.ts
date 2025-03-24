@@ -36,7 +36,6 @@ export class ListenClient extends BaseClient {
     async handleNewMessage(event: NewMessageEvent) {
         const message = event.message;
         const channelId = (message.peerId as Api.PeerChannel)?.channelId;
-
         const messageLink = `https://t.me/c/${channelId}/${message.id}`;
 
         try {
@@ -44,6 +43,12 @@ export class ListenClient extends BaseClient {
             
             const aiApproved = await aiTestMessage(message.text);
 
+            console.log('aiApproved:', aiApproved);
+
+            if (aiApproved) {
+                console.log('message:', message.text);   
+            }
+            
             aiApproved && await this.client.sendMessage(process.env.BOT_USERNAME!, {
                 message: `${message?.text} \n\n ${messageLink}`,
             });
