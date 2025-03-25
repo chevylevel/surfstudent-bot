@@ -33,13 +33,11 @@ async function main() {
 
     process.on("SIGINT", () => {
         console.log("Shutting down gracefully...");
-        bot.bot.stop();
         process.exit(0);
     });
 
     process.on("SIGTERM", () => {
         console.log("Received SIGTERM. Shutting down gracefully...");
-        bot.bot.stop();
         process.exit(0);
     });
 }
