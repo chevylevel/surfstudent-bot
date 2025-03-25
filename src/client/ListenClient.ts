@@ -31,6 +31,7 @@ export class ListenClient extends BaseClient {
         );
 
         await this.client.connect();
+        this.keepAlive();
     }
 
     async handleNewMessage(event: NewMessageEvent) {
@@ -50,5 +51,16 @@ export class ListenClient extends BaseClient {
         } catch (error) {
             console.error("Forwarding message error: ", error);
         }
+    }
+
+    async keepAlive() {
+        setInterval(async () => {
+            try {
+                await this.client.invoke(new Api.updates.GetState());
+                console.log("Keep-alive signal sent.");
+            } catch (error) {
+                console.error("Keep-alive failed:", error);
+            }
+        }, 60 * 1000); // Send keep-alive every 60 seconds
     }
 }
