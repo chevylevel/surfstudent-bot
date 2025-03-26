@@ -16,7 +16,7 @@ export class AuthService {
         this.storage = storage;
     }
 
-    async getClient(userId: string) {
+    async getConnectedClient(userId: string) {
         let client = this.clients.get(userId);
 
         if (!client) {
@@ -35,7 +35,7 @@ export class AuthService {
             phoneNumber,
             onError,
         }: RequestCodeParams) {
-        const client = await this.getClient(userId);
+        const client = await this.getConnectedClient(userId);
 
         console.log("Sending code to:", phoneNumber);
         
@@ -64,7 +64,7 @@ export class AuthService {
             phoneCodeHash,
             onError,
         }: AuthenticateParams) {
-        const client = await this.getClient(userId);
+        const client = await this.getConnectedClient(userId);
 
         try {
             await client?.invoke(
@@ -83,7 +83,7 @@ export class AuthService {
     }
 
     async getMe(userId: string) {
-        const client = await this.getClient(userId);
+        const client = await this.getConnectedClient(userId);
 
         try {
             return await client?.getMe();
@@ -94,7 +94,7 @@ export class AuthService {
     }
 
     async isAuth(userId: string) {
-        const client = await this.getClient(userId);
+        const client = await this.getConnectedClient(userId);
 
         try {
             return await client.isUserAuthorized();
