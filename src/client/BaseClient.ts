@@ -21,6 +21,8 @@ export class BaseClient {
             if (!this.client.connected) {
                 await this.client.connect();
             }
+            
+            console.log('client connected:', this.client.connected);
         } catch (error) {
             console.error('Client connection error:', error);
         }
