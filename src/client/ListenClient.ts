@@ -30,7 +30,11 @@ export class ListenClient extends BaseClient {
             })
         );
 
-        await this.client.connect();
+        try {
+            await this.client.connect();
+        } catch (error) {
+            console.error('Client connection error on init:', error);
+        }
     }
 
     async handleNewMessage(event: NewMessageEvent) {
