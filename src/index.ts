@@ -26,7 +26,7 @@ async function main() {
 
     const authService = new AuthService(clients, storage);
     const bot = new Bot(storage, authService);
-    await bot.init();
+    bot.init();
 
     const app = new ServerApp(bot.bot)
     await app.start();
