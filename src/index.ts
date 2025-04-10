@@ -19,9 +19,14 @@ async function main() {
     for (const userId in users) {
         const session = users[userId]?.session;
         const client = new ListenClient(session);
-        await client.init();
+        console.log(`Attempting to initialize client for user ID: ${userId}`);
 
-        clients.set(userId, client);
+        try {
+            await client.init();
+            clients.set(userId, client);
+        } catch (error) {
+            console.error(`Error initializing client for user ID: ${userId}`, error);
+        }
     }
 
     const authService = new AuthService(clients, storage);

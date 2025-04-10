@@ -34,7 +34,11 @@ export class ListenClient extends BaseClient {
     }
 
     async handleNewMessage(event: NewMessageEvent) {
+        
         const message = event.message;
+
+        console.log('message:', message.text, await this.client.getMe());
+        
         const channelId = (message.peerId as Api.PeerChannel)?.channelId;
         const messageLink = `https://t.me/c/${channelId}/${message.id}`;
 
