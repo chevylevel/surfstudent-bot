@@ -20,7 +20,7 @@ export class AuthService {
         let client = this.clients.get(userId);
 
         if (!client) {
-            client = new ListenClient();
+            client = new ListenClient(userId);
             this.clients.set(userId, client);
         }
 
