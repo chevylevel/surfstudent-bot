@@ -18,7 +18,7 @@ async function main() {
 
     for (const userId in users) {
         const session = users[userId]?.session;
-        const client = new ListenClient(session);
+        const client = new ListenClient(userId, session);
         console.log(`Attempting to initialize client for user ID: ${userId}`);
 
         try {
