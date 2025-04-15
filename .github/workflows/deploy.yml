@@ -19,7 +19,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 63900 # Или порт твоего SSH-сервера, если он нестандартный
+          port: 63900
           script: |
             cd ~/surfstudent_bot
             git pull origin master
