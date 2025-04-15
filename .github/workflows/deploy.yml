@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 63900 # Или порт твоего SSH-сервера, если он нестандартный
           script: |
-            cd ~/app/surfstudent_bot
+            cd ~/surfstudent_bot
             git pull origin master
             docker compose down
             docker compose up -d
